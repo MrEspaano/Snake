@@ -1,0 +1,118 @@
+:root {
+  --bg: #fafafa;
+  --fg: #202124;
+  --panel: #ffffff;
+  --border: #d8dadd;
+  --snake: #ffeb3b;
+  --snake-head: #fbc02d;
+  --food: #d33d3d;
+  --board-size: min(88vw, 480px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+.app {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 2rem 1rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.hud {
+  width: var(--board-size);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hud p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.board {
+  width: var(--board-size);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-width), 1fr);
+  grid-template-rows: repeat(var(--grid-height), 1fr);
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.cell {
+  border: 1px solid #f0f1f2;
+}
+
+.cell.snake {
+  background: var(--snake);
+}
+
+.cell.snake-head {
+  background: var(--snake-head);
+}
+
+.cell.food {
+  background: var(--food);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: inherit;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.touch-controls {
+  display: none;
+  width: var(--board-size);
+  gap: 0.4rem;
+}
+
+.touch-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.help {
+  margin: 0.2rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 820px) {
+  .touch-controls {
+    display: flex;
+    flex-direction: column;
+  }
+}
