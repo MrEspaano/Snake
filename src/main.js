@@ -51,6 +51,15 @@ function buildBoard() {
 }
 
 function render() {
+  boardElement.classList.remove("is-running", "is-paused", "is-game-over");
+  if (state.gameOver || state.won) {
+    boardElement.classList.add("is-game-over");
+  } else if (state.paused) {
+    boardElement.classList.add("is-paused");
+  } else {
+    boardElement.classList.add("is-running");
+  }
+
   for (const cell of cells) {
     cell.className = "cell";
   }
@@ -65,6 +74,7 @@ function render() {
     cell.classList.add("snake");
     if (index === 0) {
       cell.classList.add("snake-head");
+      cell.classList.add(`dir-${state.direction}`);
     }
   }
 
